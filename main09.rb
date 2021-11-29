@@ -1,32 +1,38 @@
 class Employee
 
   def prepare(bike)
-    if bike.class == BmxBike
-      bike.clean
-    elsif bike.class == RoadBike
-      bike.lubricate_gears
-    elsif bike.class == MountainBike
-      bike.adjust_suspension
-    elsif bike.class == Tricycle
-      bike.adjust_seat
-    else
-      puts 'Uhh, boss, I dunno how to do that.'
-    end
+    bike.prepare
+  end
+  
+end
+
+class Bike
+
+  def prepare
+    raise 'Uhh, boss, I dunno how to do that.'
   end
 
 end
 
 class BmxBike
 
-  def clean
+  def prepare
+    self.clean
+  end
+
+  private def clean
     puts 'Cleaning...'
   end
 
 end
 
 class RoadBike
+  
+  def prepare
+    self.lubricate_gears
+  end
 
-  def lubricate_gears
+  private def lubricate_gears
     puts 'Lubricating gears...'
   end
 
@@ -34,7 +40,11 @@ end
 
 class MountainBike
 
-  def adjust_suspension
+  def prepare
+    self.adjust_suspension
+  end
+
+  private def adjust_suspension
     puts 'Adjusting suspension...'
   end
 
@@ -42,7 +52,11 @@ end
 
 class Tricycle
 
-  def adjust_seat
+  def prepare
+    self.adjust_seat
+  end
+
+  private def adjust_seat
     puts 'Adjusting seat...'
   end
 
@@ -54,4 +68,5 @@ employee = Employee.new
 
 bikes.each do |bike|
   employee.prepare(bike)
+  
 end
